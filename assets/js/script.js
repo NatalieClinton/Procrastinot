@@ -152,6 +152,11 @@ function handleDrop(event, ui) {
         // Update the status of the task
         taskList[taskIndex].status = newStatus;
 
+        // Remove color coding if moved into 'completed'
+        if (newStatus === 'done') {
+            $(ui.draggable).removeClass('bg-danger bg-warning');
+        }
+
         // Save the updated task list to localStorage
         localStorage.setItem('tasks', JSON.stringify(taskList));
 
